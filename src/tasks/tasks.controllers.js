@@ -1,14 +1,9 @@
 const tasksDB = [
-    { 
+    {
         id: 1,
-        tasks: "Aprender NodeJS",
-        description: "Repasar los temas vistos en clase e investigar por cuenta propia",
-        status: true,
-    },{
-        id: 2,
-        tasks: "Aprendiendo React",
+        tasks: "Aprender un nuevo lenguaje de programación",
         description: "Buscar cursos o libros",
-        status: true,
+        status: "pendiente",
     }
 
 ];
@@ -28,7 +23,7 @@ const createTask = (tasksObj) => {
             id: 1,
             name: "Aprender React",
             description: "Estudiar para ser Desarrollador Front End",
-            status: true
+            status: "pendiente"
         }
         tasksDB.push(newTask);
         return newTask;
@@ -55,10 +50,11 @@ const deleteTask = (id) => {
 const updateTask = (id,data) => {
     const index = tasksDB.findIndex( tasks => tasks.id === id);
     if (index !== -1) {
-        tasksDB[index] = data
+        tasksDB[index] = data;
+        return tasksDB[index];
     } else {
         createTask(data);
-        return tasksDB.at(-1)
+        return tasksDB.at(-1);
     }
 }
 

@@ -13,8 +13,3 @@ router.route('/tasks/:id')
 module.exports = {
     router
 }
-    // getAll,
-    // getById,
-    // postTask,
-    // deleteTasks,
-    // updatedTasks

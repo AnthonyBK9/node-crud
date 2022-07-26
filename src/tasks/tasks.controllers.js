@@ -21,16 +21,16 @@ const createTask = (tasksObj) => {
     if (tasksDB.lenght === 0) {
         const newTask = {
             id: 1,
-            name: "Aprender React",
-            description: "Estudiar para ser Desarrollador Front End",
-            status: "pendiente"
+            tasks: tasksObj.tasks,
+            description: tasksObj.description,
+            status: tasksObj.status
         }
         tasksDB.push(newTask);
         return newTask;
     }
     const newTask = {
         id: tasksDB[tasksDB.length - 1].id + 1,
-        name: tasksObj.name,
+        tasks: tasksObj.tasks,
         description: tasksObj.description,
         status: tasksObj.status,
     }
@@ -50,7 +50,10 @@ const deleteTask = (id) => {
 const updateTask = (id,data) => {
     const index = tasksDB.findIndex( tasks => tasks.id === id);
     if (index !== -1) {
-        tasksDB[index] = data;
+        tasksDB[index] = {
+            id,
+            ...data
+        }
         return tasksDB[index];
     } else {
         createTask(data);
